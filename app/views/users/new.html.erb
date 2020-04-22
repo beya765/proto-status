@@ -1,0 +1,17 @@
+<h1>新規登録画面やで</h1>
+
+<%= form_for(@user) do |u| %>
+  <%= u.label :name, "名前" %>
+  <%= u.text_field :name, :class => 'form-control' %>
+
+  <%= u.label :email, "メールアドレス" %>
+  <%= u.email_field :email, :class => 'form-control' %>
+
+  <%= u.label :password, "パスワード" %>
+  <%= u.password_field :password, :class => 'form-control' %>
+
+  <%= u.label :password_confirmation, "パスワード(確認)" %>
+  <%= u.password_field :password_confirmation, :class => 'form-control' %>
+
+  <%= u.submit "send", :class => 'btn btn-primary' %>
+<% end %>

@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <header>
+      <%= link_to 'すていたす', root_path, :id => 'logo' %>
+    </header>
     <%= yield %>
+
+    <footer>
+      <%= debug(params) %>
+    </footer>
   </body>
 </html>

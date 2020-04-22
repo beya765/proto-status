@@ -1,5 +1,17 @@
 @import "bootstrap";
 
+body {
+  padding-top: 60px;
+}
+
+#logo {
+  font-size: 2em;
+  color: greenyellow;
+  letter-spacing: 5px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .st {
   float: left;
 }
