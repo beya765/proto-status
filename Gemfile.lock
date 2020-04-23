@@ -200,7 +200,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  bootstrap
+  bootstrap (~> 4.1.1)
   byebug
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
@@ -213,6 +213,7 @@ DEPENDENCIES
   rails (~> 5.1.7)
   rails-controller-testing
   rails-i18n
+  rake
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
