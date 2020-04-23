@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get users_new_url
+  test "新規登録コントローラーのテスト" do
+    get regist_path
     assert_response :success
   end
 
