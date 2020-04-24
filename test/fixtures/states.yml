@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lv: 1
+  str: 1
+  int: 1
+  user: one
+
+two:
+  lv: 1
+  str: 1
+  int: 1
+  user: two

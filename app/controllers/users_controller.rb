@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @state = @user.build_state
+    # @state.save
     if @user.save
       log_in @user
       flash[:success] = "あなたの『すていたす』へようこそ！"
@@ -17,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(params[:id])
+    @state = @user.state
   end
 
   private
