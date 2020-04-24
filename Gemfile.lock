@@ -213,7 +213,6 @@ DEPENDENCIES
   rails (~> 5.1.7)
   rails-controller-testing
   rails-i18n
-  rake
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

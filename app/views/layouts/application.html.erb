@@ -11,7 +11,11 @@
   <body>
     <header>
       <%= link_to 'すていたす', root_path, :id => 'logo' %>
-      <%= link_to 'ユーザーログイン', '#' %>
+      <% if logged_in? %>
+        <%= link_to 'ログアウト', logout_path, method: :delete %>
+      <% else %>
+        <%= link_to 'ユーザーログイン', login_path %>
+      <% end %>
     </header>
     
     <% flash.each do |message_type, message| %>
