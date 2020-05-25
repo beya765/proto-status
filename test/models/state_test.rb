@@ -3,7 +3,7 @@ require 'test_helper'
 class StateTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
-    @state = @user.states.build()
+    @state = @user.build_state
   end
   
   test "Stateモデルの有効性テスト" do

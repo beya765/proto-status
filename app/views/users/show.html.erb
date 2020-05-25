@@ -1,9 +1,94 @@
+<ul id="state-error"></ul>
+
+<h1 style="display: none">サンプルタイトル</h1>
 <strong>プレイヤー：<%= @user.name %></strong>
 
 <div class="container">
   <ul>
-    <li>lv:  <%= @state.lv %></li>
-    <li>str:  <%= @state.str %></li>
-    <li>int:  <%= @state.int %></li>
+    <li>lv:  <span id="samp"><%= @state.lv %></span></li>
   </ul>
+    <%= form_for(@state, url: user_path, remote: true) do |s| %>
+      <%#= s.hidden_field :user_id, value: @state.user_id %>
+      <%= hidden_field_tag :user_id, @state.user_id %>
+      <%= hidden_field_tag :max %>
+      <div>
+        ちから：<span id="strVal"><%= @state.str %></span>
+        <span class="form-group star" id="str"></span>
+        <button type="button" class="plus">+</button>
+        <button type="button" class="minus">-</button>
+      </div>
+      <div>
+        かしこさ：<span id="intVal"><%= @state.int %></span>
+        <span class="form-group star" id="int"></span>
+        <button type="button" class="plus">+</button>
+        <button type="button" class="minus">-</button>
+      </div>
+
+      <%= s.submit "確定", class: "btn btn-primary" %>
+    <% end %>
 </div>
+
+<script>
+// $(document).on('turbolinks:load', function() {
+
+  $('h1').on('click', function() {
+    $(this).fadeOut(1000);
+  })
+  
+  $('.plus').on('click', function() {
+    let score = $(this).prev('.star').raty('score');
+    if(!score) score = 0;
+    let dayp = 6;
+
+    if(dayp > 0) {
+      score++;
+      // ( score%3 == 0 ) ? score = 3 : score %= 3;
+      if (score%3 == 0) {
+        score = 3;
+        const nowmax = $('#max').attr("value");
+        const newmax =  $(this).prev().attr("id");
+
+        (!$('#max').attr("value")) ? $('#max').val(newmax) : $('#max').val(nowmax + "," + newmax);
+      }else {
+        score %= 3;
+      }
+
+      $(this).prev('.star').raty('readOnly', false)
+                          .raty('score', score)
+                          .raty('readOnly', true)
+      // dayp--;
+    }
+  });
+
+  $('.minus').on('click', function() {
+    let score = $(this).prev().prev('.star').raty('score');
+    let dayp = 6;
+    
+    if(dayp > 0) {
+      score--;
+      // ( score%3 == 0 ) ? score = 3 : score %= 3;
+      $(this).prev().prev('.star').raty('readOnly', false)
+                                  .raty('score', score%3)
+                                  .raty('readOnly', true);
+      dayp++;
+    }
+  });
+
+  $('#str').raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    number: 3,
+    score: <%= @state.str %> % 3,
+    scoreName: 'strP',
+    readOnly: true,
+  })
+  $('#int').raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    number: 3,
+    score: <%= @state.int %> % 3,
+    scoreName: 'intP',
+    readOnly: true,
+  })
+// })
+</script>

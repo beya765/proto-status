@@ -1,0 +1,27 @@
+document.body.addEventListener('ajax:success', function(event) {
+  <% if @state.errors.any? %>
+    <% @state.errors.full_messages.each do |msg| %>
+      $('#state-error').append('<li><%= msg %></li>')
+    <% end %>
+  <% end %>
+
+  //console.log("<%= State.column_names.map(&:to_sym).inspect %>")
+  
+  $('h1').fadeIn(1000);
+
+  $('#max').val("");
+
+  $('#strVal').text('<%= @state.str %>');
+  $('#intVal').text('<%= @state.int %>');
+
+
+  $('#str').raty('reload')
+    .raty('readOnly', false)
+    .raty('score', <%= @state.str %>%3)
+    .raty('readOnly', true);
+    
+  $('#int').raty('reload')
+    .raty('readOnly', false)
+    .raty('score', <%= @state.int %>%3)
+    .raty('readOnly', true);
+})

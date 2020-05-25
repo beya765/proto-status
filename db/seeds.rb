@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# データベース上にサンプルユーザーを生成するRailsタスク
+User.create!(name:  "beya",
+  email: "kenshinpower2000@yahoo.co.jp",
+  password:              "123456",
+  password_confirmation: "123456",
+  )
+State.create(user_id: 1)
