@@ -51,23 +51,27 @@ class UsersController < ApplicationController
           max.each do |m|
             # 星1に3P振った場合
             if (state[key]%3 == 1 && p.to_i == 1 && key.to_s == m)
-              state[key] += 3
               puts("# 星1に3P振った場合")
+              state[:point] -= 3
+              state[key] += 3
             # 星2に2P振った場合
             elsif (state[key]%3 == 2 && p.to_i == 1 && key.to_s == m)
-              state[key] += 2
               puts("# 星2に2P振った場合")
+              state[:point] -= 2
+              state[key] += 2
             # 星2に3P振った場合
             elsif (state[key]%3 == 2 && p.to_i == 2 && key.to_s == m)
-              state[key] += 3
               puts("# 星2に3P振った場合")
+              state[:point] -= 3
+              state[key] += 3
             else
-              puts(key,state[key],p.to_i)
+              state[:point] -= (p.to_i - state[key]%3)
               state[key] += (p.to_i - state[key]%3)
             end
           end
         else
           if state[key]%3 != p.to_i
+            state[:point] -= (p.to_i - state[key]%3)
             state[key] += (p.to_i - state[key]%3)
           end
         end 

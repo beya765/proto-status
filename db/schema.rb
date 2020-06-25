@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20200424103308) do
     t.integer "lv", default: 0
     t.integer "str", default: 0
     t.integer "int", default: 0
+    t.integer "point", default: 12
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
