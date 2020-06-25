@@ -1,6 +1,8 @@
+<div id="update-message"></div>
+
 <ul id="state-error"></ul>
 
-<h1 style="display: none">サンプルタイトル</h1>
+<h3 style="display: none">ステータスを更新しました</h1>
 <strong>プレイヤー：<%= @user.name %></strong>
 
 <div class="container">
@@ -24,17 +26,13 @@
         <button type="button" class="minus">-</button>
       </div>
 
+      <%= s.label :lv, "何したの？"%>
+      <%= s.text_field :lv, class: 'form-control' %>
       <%= s.submit "確定", class: "btn btn-primary" %>
     <% end %>
 </div>
 
 <script>
-// $(document).on('turbolinks:load', function() {
-
-  $('h1').on('click', function() {
-    $(this).fadeOut(1000);
-  })
-  
   $('.plus').on('click', function() {
     let score = $(this).prev('.star').raty('score');
     if(!score) score = 0;
@@ -46,6 +44,7 @@
       if (score%3 == 0) {
         score = 3;
         const nowmax = $('#max').attr("value");
+        // console.log(typeof nowmax)
         const newmax =  $(this).prev().attr("id");
 
         (!$('#max').attr("value")) ? $('#max').val(newmax) : $('#max').val(nowmax + "," + newmax);
@@ -90,5 +89,4 @@
     scoreName: 'intP',
     readOnly: true,
   })
-// })
 </script>

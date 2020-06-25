@@ -5,23 +5,24 @@ document.body.addEventListener('ajax:success', function(event) {
     <% end %>
   <% end %>
 
+  <% flash.each do |type, message| %>
+    $("#update-message").html('<p class="alert alert-<%= type %> alert-dismissible fade show"><%= message %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>')
+  <% end %>
   //console.log("<%= State.column_names.map(&:to_sym).inspect %>")
   
-  $('h1').fadeIn(1000);
 
+  // ステータス値の更新
   $('#max').val("");
-
+  $('#samp').text('<%= @state.lv %>');
   $('#strVal').text('<%= @state.str %>');
   $('#intVal').text('<%= @state.int %>');
 
-
-  $('#str').raty('reload')
-    .raty('readOnly', false)
-    .raty('score', <%= @state.str %>%3)
-    .raty('readOnly', true);
-    
-  $('#int').raty('reload')
-    .raty('readOnly', false)
-    .raty('score', <%= @state.int %>%3)
-    .raty('readOnly', true);
+  // 星の更新
+  $('#str').raty('set', {
+    score: <%= @state.str %> % 3,
+  });
+  $('#int').raty('set', {
+    score: <%= @state.int %> % 3,
+  });
+  
 })

@@ -24,10 +24,11 @@ class UsersController < ApplicationController
   def update
     @state = State.find(params[:user_id])
     lvup(@state)
-
+    @state.reload
+    
     respond_to do |format|
-      format.html { redirect_to @user }
-      format.js {}
+      # format.html { redirect_to @user }
+      format.js { flash.now[:success] = "ステータスの更新完了！" }
     end
   end
 
@@ -38,20 +39,30 @@ class UsersController < ApplicationController
         .permit(:name, :email, :password, :password_confirmation)
     end
 
+    # ステータスの更新
     def lvup(state)
       point = {str: params[:strP], int: params[:intP]}
+      # 各ステータスの星が満たされていれば、レベルアップ
       max = params[:max].split(',')
+      state[:lv] += max.length
 
       point.each do |key, p|
         if !max.blank?
           max.each do |m|
+            # 星1に3P振った場合
             if (state[key]%3 == 1 && p.to_i == 1 && key.to_s == m)
               state[key] += 3
+              puts("# 星1に3P振った場合")
+            # 星2に2P振った場合
             elsif (state[key]%3 == 2 && p.to_i == 1 && key.to_s == m)
               state[key] += 2
+              puts("# 星2に2P振った場合")
+            # 星2に3P振った場合
             elsif (state[key]%3 == 2 && p.to_i == 2 && key.to_s == m)
               state[key] += 3
+              puts("# 星2に3P振った場合")
             else
+              puts(key,state[key],p.to_i)
               state[key] += (p.to_i - state[key]%3)
             end
           end
