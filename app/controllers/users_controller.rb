@@ -45,6 +45,8 @@ class UsersController < ApplicationController
       # 各ステータスの星が満たされていれば、レベルアップ
       max = params[:max].split(',')
       state[:lv] += max.length
+      # 行動記録
+      state[:pre_action] = params[:state][:pre_action]
 
       point.each do |key, p|
         if !max.blank?

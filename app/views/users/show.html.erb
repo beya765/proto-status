@@ -22,10 +22,10 @@
         <button type="button" class="plus">+</button>
       </div>
 
-      <button type="button" class="cancel">キャンセルする</button>
+      <button type="button" class="btn cancel">キャンセルする</button>
 
-      <%= s.label :lv, "何したの？"%>
-      <%= s.text_field :lv, class: 'form-control' %>
+      <%= s.label :pre_action, "何したの？"%>
+      <%= s.text_field :pre_action, class: 'form-control' %>
       <%= s.submit "確定", class: "btn btn-primary" %>
     <% end %>
 </div>

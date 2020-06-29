@@ -1,5 +1,6 @@
 <script>
 (function () {
+  console.log('<%= @state.pre_action %>')
   let uptime = '<%= @state.updated_at.strftime('%d') %>';
   let nowtime = Number('<%= Time.current.strftime('%d') %>') + 1;
   let dayp = <%= @state.point %>;
@@ -36,9 +37,10 @@
     nowPoint = Number($('#point').text());
   });
   $('.cancel').on('click', function() {
-    console.log(nowPoint,<%= @state.point %>);
+    // console.log(nowPoint,<%= @state.point %>);
+    // ( nowPoint != <%= @state.point %> ) ? dayp = nowPoint : dayp = <%= @state.point %>;
 
-    ( nowPoint != <%= @state.point %> ) ? dayp = nowPoint : dayp = <%= @state.point %>;
+    dayp = nowPoint;
     $('.star').raty('reload');
     $('#max').val("");
     $('#point').text(dayp);
