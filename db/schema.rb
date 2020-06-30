@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200424103308) do
+ActiveRecord::Schema.define(version: 20200629071457) do
+
+  create_table "records", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
 
   create_table "states", force: :cascade do |t|
     t.integer "lv", default: 0
     t.integer "str", default: 0
     t.integer "int", default: 0
     t.integer "point", default: 12
-    t.string "pre_action"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

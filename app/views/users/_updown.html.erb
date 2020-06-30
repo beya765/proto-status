@@ -1,6 +1,5 @@
 <script>
 (function () {
-  console.log('<%= @state.pre_action %>')
   let uptime = '<%= @state.updated_at.strftime('%d') %>';
   let nowtime = Number('<%= Time.current.strftime('%d') %>') + 1;
   let dayp = <%= @state.point %>;
@@ -9,6 +8,11 @@
   // console.log(uptime,nowtime);
   // console.log(Number(uptime) < nowtime);
   // console.log('<%= @state.point.class %>');
+
+  $('.preAction').on('click', function() {
+    const preActionText = $('.preAction').text().trim()
+    $('.action').val(preActionText)
+  })
 
   $('.plus').on('click', function() {
     let score = $(this).prev('.star').raty('score');

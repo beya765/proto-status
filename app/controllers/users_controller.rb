@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @state = @user.build_state
+    @record = @user.records.build(content: "最初の一歩")
     if @user.save
       log_in @user
       flash[:success] = "あなたの『すていたす』へようこそ！"
@@ -24,8 +25,7 @@ class UsersController < ApplicationController
   def update
     @state = State.find(params[:user_id])
     lvup(@state)
-    @state.reload
-    
+
     respond_to do |format|
       # format.html { redirect_to @user }
       format.js { flash.now[:success] = "ステータスの更新完了！" }
@@ -41,13 +41,16 @@ class UsersController < ApplicationController
 
     # ステータスの更新
     def lvup(state)
+
+      # 記録保存用
+      jap_attr = {lv: "レベル", str: "ちから", int: "かしこさ"}
+      str = "成長："
+
       point = {str: params[:strP], int: params[:intP]}
       # 各ステータスの星が満たされていれば、レベルアップ
       max = params[:max].split(',')
       state[:lv] += max.length
-      # 行動記録
-      state[:pre_action] = params[:state][:pre_action]
-
+      
       point.each do |key, p|
         if !max.blank?
           max.each do |m|
@@ -67,8 +70,10 @@ class UsersController < ApplicationController
               state[:point] -= 3
               state[key] += 3
             else
-              state[:point] -= (p.to_i - state[key]%3)
-              state[key] += (p.to_i - state[key]%3)
+              if key.to_s == m
+                state[:point] -= (p.to_i - state[key]%3)
+                state[key] += (p.to_i - state[key]%3)
+              end
             end
           end
         else
@@ -79,11 +84,24 @@ class UsersController < ApplicationController
         end 
       end
 
-      if state.save
-        puts "save success"
-      else
-        puts "save fail"
-        puts state.errors.full_messages
+      # in_database 元: _was
+      State.column_names.each do |attr|
+        if state[attr] != state.send("#{attr}_in_database") && attr != "point"
+          puts(state.send("#{attr}_in_database"))
+          str << "#{jap_attr[attr.to_sym]}が#{state[attr]-state.send("#{attr}_in_database")}上がった。"
+        end
+      end
+
+      if state.has_changes_to_save?
+        if state.save
+          puts "save success"
+          user = User.find(state.user_id)
+          user.records.create(content: "行動：#{params[:state][:action]}\r\n#{str}")
+        else
+          puts "save fail"
+          puts state.errors.full_messages
+        end
       end
     end
+
 end

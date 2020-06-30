@@ -5,7 +5,6 @@ class CreateStates < ActiveRecord::Migration[5.1]
       t.integer :str, default: 0
       t.integer :int, default: 0
       t.integer :point, default: 12
-      t.string  :pre_action
       t.references :user, foreign_key: true
 
       t.timestamps

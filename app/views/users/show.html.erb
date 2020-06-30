@@ -7,8 +7,7 @@
     <li>lv:  <span id="lv"><%= @state.lv %></span></li>
     <li>今日使えるポイントの残り: <span id="point"><%= @state.point %></span>P</li>
   </ul>
-    <%= form_for(@state, url: user_path, remote: true) do |s| %>
-      <%#= s.hidden_field :user_id, value: @state.user_id %>
+    <%= form_with model: @state, url: user_path do |f| %>
       <%= hidden_field_tag :user_id, @state.user_id %>
       <%= hidden_field_tag :max %>
       <div>
@@ -24,9 +23,19 @@
 
       <button type="button" class="btn cancel">キャンセルする</button>
 
-      <%= s.label :pre_action, "何したの？"%>
-      <%= s.text_field :pre_action, class: 'form-control' %>
-      <%= s.submit "確定", class: "btn btn-primary" %>
+      <% if @user.records.last.content.empty? %>
+        なし
+      <% else %>
+        前回の行動:<button type="button" class="btn preAction">
+                    <%= @user.records.last.content.slice(/[^"行動："].+$/) %>
+                  </button>
+      <% end %>
+
+      <div>
+        <%= f.label :action, "何したの？"%>
+        <%= f.text_field :action, class: 'action form-control', required: true %>
+        <%= f.submit "確定", class: "btn btn-primary" %>
+      </div>
     <% end %>
 </div>
 

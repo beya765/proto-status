@@ -13,3 +13,7 @@ User.create!(name:  "beya",
   password_confirmation: "123456",
   )
 State.create(user_id: 1)
+
+3.times do |n|
+  Record.create(user_id:1, content: "#{n+1}日目の行動")
+end

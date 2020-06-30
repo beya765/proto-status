@@ -1,0 +1,9 @@
+<h1>Records#show</h1>
+<%= @user.name %>のこれまでの行動
+
+<% @records.each do |r|  %>
+  <div class="card">
+    <%= simple_format(h(r.content)) %>
+    <%= r.created_at %>
+  </div>
+<% end %>
