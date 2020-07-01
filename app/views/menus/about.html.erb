@@ -1,18 +1,38 @@
-<h1>日々の成長記録を付けていく</h1>
-<div class="container">
-  <%= image_tag "yaruo", alt: "yaruo logo", :size => "200x150", :class => "st" %>
-  <ul class="st">
-    <li>ちから</li>
-    <li>すばやさ</li>
-    <li>かしこさ</li>
-    <li>ぎのう</li>
-    <li>みりょく</li>
-  </ul>
+<h2>日々の成長を記録していこう</h2>
 
+<div class="introduction">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag "yaruo", alt: "yaruo logo", size: "200x150", class: "float-left" %>
+    </div>
+    <div class="col-5 col-md-3">
+      <ul class="status">
+        <li><span class="badge badge-info">ちから</span></li>
+        <li><span class="badge badge-info">たいりょく</span></li>
+        <li><span class="badge badge-info">きよう</span></li>
+        <li><span class="badge badge-info">かしこさ</span></li>
+        <li><span class="badge badge-success">とくしゅ</span></li>
+      </ul>
+    </div>
+    <div class="col-7 col-md-6">
+      <div class="progress mt-2" style="height: 18px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:45%;"></div>
+      </div>
+      <div class="progress mt-4" style="height: 18px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;"></div>
+      </div>
+      <div class="progress mt-4" style="height: 18px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:65%;"></div>
+      </div>
+      <div class="progress mt-4" style="height: 18px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:85%;"></div>
+      </div>
+      <div class="progress mt-4" style="height: 18px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:5%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Avartusは自分の分身を使って、強く育つことを目的としたアプリです。</h3>
+  <p>その日とった行動に対するパラメータを割り振り、内容を一言書き込んでいきます。そして後から、自分がどういった成長を遂げたのか振り返ることができます。是非一度お試しください。</p>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<%= link_to "ホーム画面へ戻る", root_path %>

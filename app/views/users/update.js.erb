@@ -9,15 +9,15 @@ document.body.addEventListener('ajax:success', function(event) {
     $("#update-message").html('<p class="alert alert-<%= type %> alert-dismissible fade show"><%= message %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>')
   <% end %>
 
-  // ステータス値の更新
+  <%# ステータス値の更新 %>
   $('#max').val("");
   $('#lv').text('<%= @state.lv %>');
   $('#point').text('<%= @state.point %>');
   $('#strVal').text('<%= @state.str %>');
   $('#intVal').text('<%= @state.int %>');
   $('.action').val("")
-
-  // 星の更新
+  
+  <%# 星の更新 %>
   $('#str').raty('set', {
     score: <%= @state.str %> % 3,
   });

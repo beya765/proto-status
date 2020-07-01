@@ -1,17 +1,54 @@
 @import "bootstrap";
 
 body {
-  padding-top: 60px;
+  padding-top: 40px;
+  font-family: fantasy, cursive, sans-serif;
 }
 
 #logo {
-  font-size: 2em;
-  color: greenyellow;
-  letter-spacing: 5px;
+  font-size: 1.8em;
+  color: #fff;
+  letter-spacing: 3px;
   font-weight: bold;
   text-decoration: none;
+  text-shadow: 5px 5px 3px #999;
 }
 
-.st {
-  float: left;
+
+footer {
+  margin-top: 30px;
+  padding: 5px;
+  border-top: 1px solid teal;
+  a {
+    color: rgb(59, 52, 52);
+    border: 1.5px ridge #152;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: all .3s ease 0s;
+    &:hover {
+      text-decoration: none;
+      transform: scale(1.2);
+    }
+  }
+
+}
+
+.jumbotron {
+  background-image: url("home.jpg");
+  background-size: cover;
+  background-position: center 82%;
+  text-align: center;
+}
+
+.introduction {
+  margin-top: 15px;
+}
+
+.status {
+  display: inline-block;
+  list-style: none;
+  li {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
 }

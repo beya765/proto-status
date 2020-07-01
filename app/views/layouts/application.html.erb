@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Status</title>
+    <title>Avartus</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,30 +9,22 @@
   </head>
 
   <body>
-    <header>
-      <%= link_to 'あばーたす', root_path, :id => 'logo' %>
-      <% if logged_in? %>
-        <%= link_to 'マイページ', current_user %>
-        <%= link_to '成長記録', record_path, id: current_user.id %>
-        <%= link_to 'ログアウト', logout_path, method: :delete %>
-      <% else %>
-        <%= link_to 'ユーザーログイン', login_path %>
-      <% end %>
-    </header>
-    
-    
-    <% flash.each do |message_type, message| %>
-      <div id="abc" class="alert alert-<%= message_type %> alert-dismissible fade show">
-        <%= message %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <% end %>
-    <%= yield %>
+    <%= render 'layouts/header' %>
 
-    <footer>
-      <%= debug(params) %>
-    </footer>
+    <div class="container">
+    
+      <% flash.each do |message_type, message| %>
+        <div id="abc" class="alert alert-<%= message_type %> alert-dismissible fade show">
+          <%= message %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>
