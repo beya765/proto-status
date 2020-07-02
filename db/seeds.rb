@@ -14,6 +14,6 @@ User.create!(name:  "beya",
   )
 State.create(user_id: 1)
 
-3.times do |n|
+200.times do |n|
   Record.create(user_id:1, content: "#{n+1}日目の行動")
 end

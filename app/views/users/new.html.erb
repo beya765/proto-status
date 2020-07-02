@@ -1,4 +1,4 @@
-<h1>新規登録画面やで</h1>
+<h1 class="text-center">新規登録</h1>
 
 <% if @user.errors.any? %>
   <% @user.errors.full_messages.each do |msg| %>
@@ -8,17 +8,17 @@
   <% end %>
 <% end %>
 
-<%= form_for(@user, url: regist_path) do |u| %>
-  <%= u.label :name, "名前" %>
+<%= form_with model: @user, url: regist_path, class: "form-group" do |u| %>
+  <%= u.label :name, "名前", class: "form-check-label" %>
   <%= u.text_field :name, :class => 'form-control' %>
 
-  <%= u.label :email, "メールアドレス" %>
+  <%= u.label :email, "メールアドレス", class: "form-check-label" %>
   <%= u.email_field :email, :class => 'form-control' %>
 
-  <%= u.label :password, "パスワード" %>
+  <%= u.label :password, "パスワード", class: "form-check-label" %>
   <%= u.password_field :password, :class => 'form-control' %>
 
-  <%= u.label :password_confirmation, "パスワード(確認)" %>
+  <%= u.label :password_confirmation, "パスワード（確認）", class: "form-check-label" %>
   <%= u.password_field :password_confirmation, :class => 'form-control' %>
 
   <%= u.submit "この内容で登録する", :class => 'btn btn-primary' %>

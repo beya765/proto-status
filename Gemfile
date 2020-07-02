@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'rails-i18n' # エラーメッセージ日本語化
+gem 'kaminari' # ページネーション
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

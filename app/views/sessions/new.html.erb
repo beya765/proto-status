@@ -1,13 +1,12 @@
-<h1>ログイン</h1>
+<h1 class="text-center">ログイン</h1>
 
-<%#= form_for(:session, url: login_path) do |u| %>
-<%= form_for(:session, url: "#") do |u| %>
+<%= form_with url: login_path, class: "form-group" do |f| %>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <%= u.label :email, "メールアドレス" %>
-  <%= u.email_field :email, :class => 'form-control' %>
+  <%= f.label :email, "メールアドレス", class: "form-check-label" %>
+  <%= f.email_field :email, class: 'form-control' %>
 
-  <%= u.label :password, "パスワード" %>
-  <%= u.password_field :password, :class => 'form-control' %>
+  <%= f.label :password, "パスワード", class: "form-check-label" %>
+  <%= f.password_field :password, class: 'form-control' %>
 
-  <%= u.submit "ログインする", :class => 'btn btn-primary' %>
+  <%= f.submit "ログインする", class: 'btn btn-primary' %>
 <% end %>
