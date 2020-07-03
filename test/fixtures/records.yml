@@ -1,4 +1,5 @@
 orange:
-  content: "I just ate an orange!"
+  act_content: "I just ate an orange!"
+  grow_content: "1 power up!!!"
   created_at: <%= 10.minutes.ago %>
   user: michael

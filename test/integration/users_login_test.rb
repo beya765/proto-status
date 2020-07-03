@@ -4,7 +4,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
     @user.create_state
-    @user.records.build(content: "sample")
+    @user.records.build(act_content: "act sample", grow_content: "grow sample")
   end
 
   test "フラッシュメッセージの残留" do
