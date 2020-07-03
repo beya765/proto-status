@@ -7,7 +7,14 @@
       <li class="list-group-item">
         <%# lメソッド参考: https://qiita.com/jnchito/items/831654253fb8a958ec25  %>
         <h5 class="card-title"><%= l r.created_at %></h5>
-        <p class="card-text"><%= simple_format(h(r.content)) %></p>
+        <p class="card-text">
+          <span class="badge badge-pill badge-secondary">行動</span>
+          <%= r.act_content %>
+        </p>
+        <p class="card-text">
+          <span class="badge badge-pill badge-success">成長</span>
+          <%= r.grow_content %>
+        </p>
       </li>
     <% end %>
   </ul>

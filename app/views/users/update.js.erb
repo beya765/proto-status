@@ -5,7 +5,10 @@ document.body.addEventListener('ajax:success', function(event) {
     <% end %>
   <% end %>
 
-  $("#update-message").html('<p class="alert alert-success alert-dismissible fade show">ステータスの更新完了！<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>');
+  <% flash.each do |type, msg| %>
+    $("#update-message")
+      .html('<p class="alert alert-<%= type %> alert-dismissible fade show"><%= msg %><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>');
+  <% end %>
 
   <%# ステータス値の更新 %>
   $('#max').val("");
@@ -17,6 +20,7 @@ document.body.addEventListener('ajax:success', function(event) {
   $('#intVal').text('<%= @state.int %>');
   $('#speVal').text('<%= @state.spe %>');
   $('.action').val("");
+  $('.preAction').text('<%= @state.user.records.last.act_content %>')
   $(".status-bar").html("<%= escape_javascript(render 'shared/progress_bar', state: @state)%>");
 
   

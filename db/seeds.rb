@@ -15,5 +15,5 @@ User.create!(name:  "beya",
 State.create(user_id: 1, point: 99)
 
 30.times do |n|
-  Record.create(user_id:1, content: "#{n+1}日目の行動")
+  Record.create(user_id:1, act_content: "#{n+1}日目の行動", grow_content: "#{n+1}の強さを得た。")
 end

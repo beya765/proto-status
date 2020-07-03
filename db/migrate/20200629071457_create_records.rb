@@ -1,7 +1,8 @@
 class CreateRecords < ActiveRecord::Migration[5.1]
   def change
     create_table :records do |t|
-      t.string :content
+      t.string :act_content
+      t.string :grow_content
       t.references :user, foreign_key: true
 
       t.timestamps

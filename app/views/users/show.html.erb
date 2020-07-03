@@ -1,6 +1,5 @@
 <!-- flashメッセージ(ajax用) -->
 <div id="update-message"></div>
-
 <ul class="list-group list-group-flush text-center mb-4">
   <li class="list-group-item">
     <h3>Player：<%= @user.name %></h1>
@@ -33,11 +32,11 @@
 </div>
 
 <%if !@user.records.empty? %>
-  <% if !@user.records.last.content.nil? %>
+  <% if !@user.records.last.act_content.nil? %>
     <label class="ml-2">
       前回の行動（クリックで自動入力）: 　
       <button type="button" class="btn btn-outline-info preAction">
-        <%= @user.records.last.content.slice(/[^"行動："].+$/) %>
+        <%= @user.records.last.act_content %>
       </button>
     </label>
   <% end %>

@@ -13,7 +13,8 @@
 ActiveRecord::Schema.define(version: 20200629071457) do
 
   create_table "records", force: :cascade do |t|
-    t.string "content"
+    t.string "act_content"
+    t.string "grow_content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
