@@ -1,4 +1,5 @@
 <script>
+
   $('#str').raty({
     starOff:  '<%= asset_path('star-off.png') %>',
     starOn : '<%= asset_path('star-on.png') %>',
@@ -6,7 +7,23 @@
     score: <%= @state.str %> % 3,
     scoreName: 'strP',
     readOnly: true,
-  })
+  });
+  $('#vit').raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    number: 3,
+    score: <%= @state.vit %> % 3,
+    scoreName: 'vitP',
+    readOnly: true,
+  });
+  $('#dex').raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    number: 3,
+    score: <%= @state.dex %> % 3,
+    scoreName: 'dexP',
+    readOnly: true,
+  });
   $('#int').raty({
     starOff:  '<%= asset_path('star-off.png') %>',
     starOn : '<%= asset_path('star-on.png') %>',
@@ -14,5 +31,13 @@
     score: <%= @state.int %> % 3,
     scoreName: 'intP',
     readOnly: true,
-  })
+  });
+  $('#spe').raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    number: 3,
+    score: <%= @state.spe %> % 3,
+    scoreName: 'speP',
+    readOnly: true,
+  });
 </script>

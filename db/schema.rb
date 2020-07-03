@@ -23,8 +23,11 @@ ActiveRecord::Schema.define(version: 20200629071457) do
   create_table "states", force: :cascade do |t|
     t.integer "lv", default: 0
     t.integer "str", default: 0
+    t.integer "vit", default: 0
+    t.integer "dex", default: 0
     t.integer "int", default: 0
-    t.integer "point", default: 12
+    t.integer "spe", default: 0
+    t.integer "point", default: 50
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

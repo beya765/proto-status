@@ -15,24 +15,11 @@
       </ul>
     </div>
     <div class="col-7 col-md-6">
-      <div class="progress mt-2" style="height: 18px;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:45%;"></div>
-      </div>
-      <div class="progress mt-4" style="height: 18px;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%;"></div>
-      </div>
-      <div class="progress mt-4" style="height: 18px;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:65%;"></div>
-      </div>
-      <div class="progress mt-4" style="height: 18px;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:85%;"></div>
-      </div>
-      <div class="progress mt-4" style="height: 18px;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:5%;"></div>
-      </div>
+      <%= render 'shared/progress_bar', state: @rand_state %>
     </div>
   </div>
 
   <h3>Avartusは自分の分身を使って、強く育つことを目的としたアプリです。</h3>
-  <p>その日とった行動に対するパラメータを割り振り、内容を一言書き込んでいきます。そして後から、自分がどういった成長を遂げたのか振り返ることができます。是非一度お試しください。</p>
+  <p>使用方法・・・「マイページ」で、その日の行動に対するパラメータを割り振り、内容と共に日々の行動を記録していきます。「成長記録」では、<br>これまで自分がどういった成長を遂げたのか
+  振り返ることができます。自分に合ったキャラクターを作ってみましょう。</p>
 </div>

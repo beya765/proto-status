@@ -1,43 +1,48 @@
+<!-- flashメッセージ(ajax用) -->
 <div id="update-message"></div>
 
-<strong>プレイヤー：<%= @user.name %></strong>
+<ul class="list-group list-group-flush text-center mb-4">
+  <li class="list-group-item">
+    <h3>Player：<%= @user.name %></h1>
+  </li>
+  <li class="list-group-item">
+    Lv :  <span id="lv"><%= @state.lv %></span>
+  </li>
+  <li class="list-group-item">
+    本日使えるポイント : <span id="point"><%= @state.point %></span>P
+  </li>
+</ul>
 
-<div class="container">
-  <ul>
-    <li>lv:  <span id="lv"><%= @state.lv %></span></li>
-    <li>今日使えるポイントの残り: <span id="point"><%= @state.point %></span>P</li>
-  </ul>
-    <%= form_with model: @state, url: user_path do |f| %>
-      <%= hidden_field_tag :user_id, @state.user_id %>
-      <%= hidden_field_tag :max %>
-      <div>
-        ちから：<span id="strVal"><%= @state.str %></span>
-        <span class="form-group star" id="str"></span>
-        <button type="button" class="plus">+</button>
-      </div>
-      <div>
-        かしこさ：<span id="intVal"><%= @state.int %></span>
-        <span class="form-group star" id="int"></span>
-        <button type="button" class="plus">+</button>
-      </div>
-
-      <button type="button" class="btn cancel">キャンセルする</button>
-
-      <% if @user.records.last.content.empty? %>
-        なし
-      <% else %>
-        前回の行動:<button type="button" class="btn preAction">
-                    <%= @user.records.last.content.slice(/[^"行動："].+$/) %>
-                  </button>
-      <% end %>
-
-      <div>
-        <%= f.label :action, "何したの？"%>
-        <%= f.text_field :action, class: 'action form-control', required: true %>
-        <%= f.submit "確定", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+<div class="text-center my-3">
+    <%= image_tag "yaruo", alt: "yaruo logo", size: "200x150" %>
 </div>
 
+<div class="row mb-3">
+  <div class="col-9 col-lg-5">
+    <%= render 'form' %>
+  </div>
+
+  <div class="col-3 col-lg-7">
+    <div class="status-bar">
+      <%= render 'shared/progress_bar', state: @state %>
+    </div>
+    <div class="text-center m-5">
+      <button type="button" class="btn btn-danger cancel">パラメータの割り振りをキャンセルする</button>
+    </div>
+  </div>
+</div>
+
+<%if !@user.records.empty? %>
+  <% if !@user.records.last.content.nil? %>
+    <label class="ml-2">
+      前回の行動（クリックで自動入力）: 　
+      <button type="button" class="btn btn-outline-info preAction">
+        <%= @user.records.last.content.slice(/[^"行動："].+$/) %>
+      </button>
+    </label>
+  <% end %>
+<% end %>
+
+
 <%= render 'raty' %>
-<%= render 'updown' %>
+<%= render 'raty_control' %>

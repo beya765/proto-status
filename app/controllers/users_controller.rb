@@ -26,9 +26,11 @@ class UsersController < ApplicationController
     @state = State.find(params[:user_id])
     lvup(@state)
 
+    @record = Record.find(params[:user_id])
+
     respond_to do |format|
       # format.html { redirect_to @user }
-      format.js { flash.now[:success] = "ステータスの更新完了！" }
+      format.js
     end
   end
 
@@ -43,10 +45,10 @@ class UsersController < ApplicationController
     def lvup(state)
 
       # 記録保存用
-      jap_attr = {lv: "レベル", str: "ちから", int: "かしこさ"}
-      str = "成長："
+      jap_attr = {lv: "レベル", str: "ちから", vit: "たいりょく", dex: "きよう", int: "かしこさ", spe: "とくしゅ"}
+      growth_str = "成長："
 
-      point = {str: params[:strP], int: params[:intP]}
+      point = {str: params[:strP], vit: params[:vitP], dex: params[:dexP], int: params[:intP], spe: params[:speP]}
       # 各ステータスの星が満たされていれば、レベルアップ
       max = params[:max].split(',')
       state[:lv] += max.length
@@ -88,7 +90,7 @@ class UsersController < ApplicationController
       State.column_names.each do |attr|
         if state[attr] != state.send("#{attr}_in_database") && attr != "point"
           puts(state.send("#{attr}_in_database"))
-          str << "#{jap_attr[attr.to_sym]}が#{state[attr]-state.send("#{attr}_in_database")}上がった。"
+          growth_str << "#{jap_attr[attr.to_sym]}が#{state[attr]-state.send("#{attr}_in_database")}上がった。"
         end
       end
 
@@ -96,7 +98,7 @@ class UsersController < ApplicationController
         if state.save
           puts "save success"
           user = User.find(state.user_id)
-          user.records.create(content: "行動：#{params[:state][:action]}\r\n#{str}")
+          user.records.create(content: "行動：#{params[:state][:action]}\r\n#{growth_str}")
         else
           puts "save fail"
           puts state.errors.full_messages

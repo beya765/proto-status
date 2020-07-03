@@ -1,0 +1,46 @@
+<%= form_with model: @state, url: user_path do |f| %>
+  <%= hidden_field_tag :user_id, @state.user_id %>
+  <%= hidden_field_tag :max %>
+  
+  <ul class="status">
+    <li>
+      <span class="badge badge-info">ちから ( <span id="strVal"><%= @state.str %></span> ) | 
+        <span class=" form-group star" id="str"></span>
+      </span>
+      <button type="button" class="btn btn-outline-success rounded-circle py-1 plus">+</button>
+    </li>
+    <li>
+      <div>
+      <span class="badge badge-info">たいりょく ( <span id="vitVal"><%= @state.vit %></span> ) | 
+        <span class=" form-group star" id="vit"></span>
+        </span>
+        <button type="button" class="btn btn-outline-success rounded-circle py-1 plus">+</button>
+        </div>
+    </li>
+    <li><span class="badge badge-info">きよう ( <span id="dexVal"><%= @state.dex %></span> ) | 
+        <span class=" form-group star" id="dex"></span>
+        </span>
+        <button type="button" class="btn btn-outline-success rounded-circle py-1 plus">+</button>
+    </li>
+    <li>
+      <span class="badge badge-info">かしこさ ( <span id="intVal"><%= @state.int %></span> ) | 
+        <span class="form-group star" id="int"></span>
+      </span>
+      <button type="button" class="btn btn-outline-success rounded-circle py-1 plus">+</button>
+    </li>
+    <li>
+      <span class="badge badge-info">とくしゅ ( <span id="speVal"><%= @state.spe %></span> ) | 
+        <span class="form-group star" id="spe"></span>
+      </span>
+      <button type="button" class="btn btn-outline-success rounded-circle py-1 plus">+</button>
+    </li>
+  </ul>
+
+  <div class="card text-center">
+    <div class="card-body">
+      <%= f.label :action, "本日の行動を、ここに入力", class: " card-title" %>
+      <%= f.text_field :action, class: 'form-control action  card-text', required: true %>
+      <%= f.submit "記録する", class: "btn btn-primary card-text" %>
+    </div>
+  </div>
+<% end %>
