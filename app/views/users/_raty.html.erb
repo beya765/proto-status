@@ -1,43 +1,46 @@
 <script>
+  (function () {
+    const divisor = STAR_MAX = 3;
 
-  $('#str').raty({
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    number: 3,
-    score: <%= @state.str %> % 3,
-    scoreName: 'strP',
-    readOnly: true,
-  });
-  $('#vit').raty({
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    number: 3,
-    score: <%= @state.vit %> % 3,
-    scoreName: 'vitP',
-    readOnly: true,
-  });
-  $('#dex').raty({
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    number: 3,
-    score: <%= @state.dex %> % 3,
-    scoreName: 'dexP',
-    readOnly: true,
-  });
-  $('#int').raty({
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    number: 3,
-    score: <%= @state.int %> % 3,
-    scoreName: 'intP',
-    readOnly: true,
-  });
-  $('#spe').raty({
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    number: 3,
-    score: <%= @state.spe %> % 3,
-    scoreName: 'speP',
-    readOnly: true,
-  });
+    $('#str').raty({
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      number: STAR_MAX,
+      score: <%= @state.str %> % divisor,
+      scoreName: 'strP',
+      readOnly: true,
+    });
+    $('#vit').raty({
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      number: STAR_MAX,
+      score: <%= @state.vit %> % divisor,
+      scoreName: 'vitP',
+      readOnly: true,
+    });
+    $('#dex').raty({
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      number: STAR_MAX,
+      score: <%= @state.dex %> % divisor,
+      scoreName: 'dexP',
+      readOnly: true,
+    });
+    $('#int').raty({
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      number: STAR_MAX,
+      score: <%= @state.int %> % divisor,
+      scoreName: 'intP',
+      readOnly: true,
+    });
+    $('#spe').raty({
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      number: STAR_MAX,
+      score: <%= @state.spe %> % divisor,
+      scoreName: 'speP',
+      readOnly: true,
+    });
+  }());
 </script>

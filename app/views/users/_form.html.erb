@@ -1,6 +1,6 @@
 <%= form_with model: @state, url: user_path do |f| %>
   <%= hidden_field_tag :user_id, @state.user_id %>
-  <%= hidden_field_tag :max %>
+  <%= hidden_field_tag :full %>
   
   <ul class="status">
     <li>
@@ -40,7 +40,7 @@
     <div class="card-body">
       <%= f.label :action, "本日の行動を、ここに入力", class: " card-title" %>
       <%= f.text_field :action, class: 'form-control action  card-text', required: true %>
-      <%= f.submit "記録する", class: "btn btn-primary card-text" %>
+      <%= f.submit "記録する", class: "btn btn-primary btn-block card-text" %>
     </div>
   </div>
 <% end %>

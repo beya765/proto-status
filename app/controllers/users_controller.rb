@@ -49,16 +49,16 @@ class UsersController < ApplicationController
       divisor = 3
 
       # 各ステータスの星が満たされていれば、レベルアップ
-      max_attr = params[:max].split(',')
-      state[:lv] += max_attr.length
+      full_attr = params[:full].split(',')
+      state[:lv] += full_attr.length
 
       # 記録保存用
       jap_attr = {lv: "レベル", str: "ちから", vit: "たいりょく", dex: "きよう", int: "かしこさ", spe: "とくしゅ"}
       grow_str = ""
 
       point.each do |key, raty_point|
-        if !max_attr.blank?
-          max_attr.each do |attr_name|
+        if !full_attr.blank?
+          full_attr.each do |attr_name|
             # 星1に3P振った場合
             if (state[key]%divisor == 1 && raty_point == 1 && key.to_s == attr_name)
               puts("# 星1に3P振った場合")
