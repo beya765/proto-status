@@ -47,46 +47,35 @@ class UsersController < ApplicationController
     def lvup(state)
       point = {str: params[:strP].to_i, vit: params[:vitP].to_i, dex: params[:dexP].to_i, int: params[:intP].to_i, spe: params[:speP].to_i}
       divisor = 3
+      raty_max = 3
 
       # 各ステータスの星が満たされていれば、レベルアップ
-      full_attr = params[:full].split(',')
+      full_attr = params[:full_attr].split(',')
       state[:lv] += full_attr.length
 
       # 記録保存用
       jap_attr = {lv: "レベル", str: "ちから", vit: "たいりょく", dex: "きよう", int: "かしこさ", spe: "とくしゅ"}
       grow_str = ""
 
-      point.each do |key, raty_point|
-        if !full_attr.blank?
-          full_attr.each do |attr_name|
-            # 星1に3P振った場合
-            if (state[key]%divisor == 1 && raty_point == 1 && key.to_s == attr_name)
-              puts("# 星1に3P振った場合")
-              state[:point] -= 3
-              state[key] += 3
-            # 星2に2P振った場合
-            elsif (state[key]%divisor == 2 && raty_point == 1 && key.to_s == attr_name)
-              puts("# 星2に2P振った場合")
-              state[:point] -= 2
-              state[key] += 2
-            # 星2に3P振った場合
-            elsif (state[key]%divisor == 2 && raty_point == 2 && key.to_s == attr_name)
-              puts("# 星2に3P振った場合")
-              state[:point] -= 3
-              state[key] += 3
-            else
-              if key.to_s == attr_name
-                state[:point] -= (raty_point - state[key]%divisor)
-                state[key] += (raty_point - state[key]%divisor)
-              end
-            end
+      if !full_attr.blank?
+        full_attr.each do |attr_name|
+          if point[attr_name.to_sym] == raty_max
+            state[attr_name]  += raty_max - state[attr_name]%divisor
+            state[:point]     -= raty_max - state[attr_name]%divisor
+          else
+            state[attr_name]  += raty_max - state[attr_name]%divisor + point[attr_name.to_sym]
+            state[:point]     -= raty_max - state[attr_name]%divisor + point[attr_name.to_sym]
           end
-        else
+        end
+      end
+
+      point.each do |key, raty_point|
+        if !state.send("will_save_change_to_#{key}?")
           if state[key]%divisor != raty_point
             state[:point] -= (raty_point - state[key]%divisor)
             state[key] += (raty_point - state[key]%divisor)
           end
-        end 
+        end
       end
 
       # in_database 元: _was

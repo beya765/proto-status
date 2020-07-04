@@ -22,9 +22,9 @@
         ratyScore++;
         if (ratyScore%3 == 0) {
           ratyScore = 3;
-          const nowfull = $('#full').attr("value");
+          const nowfull = $('#full_attr').attr("value");
           const newfull =  $(this).prev().children('.star').attr("id");
-          (!$('#full').attr("value")) ? $('#full').val(newfull) : $('#full').val(nowfull + "," + newfull);
+          (!$('#full_attr').attr("value")) ? $('#full_attr').val(newfull) : $('#full_attr').val(nowfull + "," + newfull);
         }else {
           ratyScore %= 3;
         }
@@ -46,7 +46,7 @@
 
       dayp = nowPoint;
       $('.star').raty('reload');
-      $('#full').val("");
+      $('#full_attr').val("");
       $('#point').text(dayp);
     });
   }());

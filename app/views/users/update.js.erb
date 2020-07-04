@@ -11,7 +11,7 @@ document.body.addEventListener('ajax:success', function(event) {
   <% end %>
 
   <%# ステータス値の更新 %>
-  $('#full').val("");
+  $('#full_attr').val("");
   $('#lv').text('<%= @state.lv %>');
   $('#point').text('<%= @state.point %>');
   $('#strVal').text('<%= @state.str %>');
