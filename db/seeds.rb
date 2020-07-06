@@ -12,8 +12,8 @@ User.create!(name:  "beya",
   password:              "123456",
   password_confirmation: "123456",
   )
-State.create(user_id: 1, point: 99)
+State.create(user_id: 1, point: 30)
 
-30.times do |n|
+20.times do |n|
   Record.create(user_id:1, act_content: "#{n+1}日目の行動", grow_content: "#{n+1}の強さを得た。")
 end

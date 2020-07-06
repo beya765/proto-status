@@ -3,7 +3,6 @@
   <head>
     <title>Avartus</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,7 +11,6 @@
     <%= render 'layouts/header' %>
 
     <div class="container">
-    
       <% flash.each do |message_type, message| %>
         <div id="abc" class="alert alert-<%= message_type %> alert-dismissible fade show">
           <%= message %>

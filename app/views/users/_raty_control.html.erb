@@ -1,13 +1,11 @@
 <script>
   (function () {
-    let uptime = '<%= @state.updated_at.strftime('%d') %>';
-    let nowtime = Number('<%= Time.current.strftime('%d') %>') + 1;
-    let dayp = <%= @state.point %>;
-    let nowPoint = Number($('#point').text());
+    let nowPoint = Number($('#point').text()); <%# 表示用 %>
+    let usablePoint = <%= @state.point %>; <%# ポイント増減を取り扱う %>
 
-    // console.log(uptime,nowtime);
-    // console.log(Number(uptime) < nowtime);
-    // console.log('<%= @state.point.class %>');
+    document.body.addEventListener('ajax:success', function(event) {
+      nowPoint = Number($('#point').text());
+    });
 
     $('.preAction').on('click', function() {
       const preActionText = $('.preAction').text().trim()
@@ -18,36 +16,50 @@
       let ratyScore = $(this).prev().children('.star').raty('score');
       if(!ratyScore) ratyScore = 0;
 
-      if(dayp > 0) {
+      if(usablePoint > 0) {
         ratyScore++;
+
+        <%# 各ステータスのRatyスコアがMAXになったときの処理 %>
         if (ratyScore%3 == 0) {
-          ratyScore = 3;
-          const nowfull = $('#full_attr').attr("value");
-          const newfull =  $(this).prev().children('.star').attr("id");
-          (!$('#full_attr').attr("value")) ? $('#full_attr').val(newfull) : $('#full_attr').val(nowfull + "," + newfull);
+          const nowFullAttr = $('#full_attr').attr("value");
+          const addFullAttr = $(this).prev().children('.star').attr("id");
+
+          if (!$('#full_attr').attr("value")) {
+            $('#full_attr').val(addFullAttr);
+          } else {
+            $('#full_attr').val(nowFullAttr + "," + addFullAttr);
+          }
         }else {
           ratyScore %= 3;
         }
 
-        $(this).prev().children('.star').raty('readOnly', false)
+        $(this).prev().children('.star')
+                            .raty('readOnly', false)
                             .raty('score', ratyScore)
                             .raty('readOnly', true)
-        dayp--;
-        $('#point').text(dayp);
+        usablePoint--;
+        $('#point').text(usablePoint);
+      } else {
+        $(this).attr({'data-original-title': 'ポイントが空です', 'data-content': '翌日になればポイントが回復します'});
       }
     });
 
-    document.body.addEventListener('ajax:success', function(event) {
-      nowPoint = Number($('#point').text());
+    <%# ポップアップ表示(or画面クリック)の際、他にポップアップがあればそれを削除 %>
+    $('body').on('click', function (e) {
+      $('[data-toggle="popover"]').each(function () {
+        console.log($(this).has(e.target).length)
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+        }
+      });
     });
-    $('.cancel').on('click', function() {
-      // console.log(nowPoint,<%= @state.point %>);
-      // ( nowPoint != <%= @state.point %> ) ? dayp = nowPoint : dayp = <%= @state.point %>;
 
-      dayp = nowPoint;
+    $('.cancel').on('click', function() {
+      usablePoint = nowPoint;
+
       $('.star').raty('reload');
       $('#full_attr').val("");
-      $('#point').text(dayp);
+      $('#point').text(usablePoint);
     });
   }());
 </script>

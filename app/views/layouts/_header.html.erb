@@ -4,7 +4,8 @@
     <nav>
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item"><%= link_to 'マイページ', current_user, class: "nav-link" %></li>
+          <%# Raty動作安定のため、turbolinksをoff %>
+          <li class="nav-item"><%= link_to 'マイページ', current_user, class: "nav-link", data: {"turbolinks" => false} %></li>
           <li class="nav-item"><%= link_to '成長記録', record_path, id: current_user.id, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link" %></li>
 

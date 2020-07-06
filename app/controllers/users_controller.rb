@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @state = @user.state
+    @state.point_recovery
   end
 
   def update
@@ -60,11 +61,11 @@ class UsersController < ApplicationController
       if !full_attr.blank?
         full_attr.each do |attr_name|
           if point[attr_name.to_sym] == raty_max
-            state[attr_name]  += raty_max - state[attr_name]%divisor
             state[:point]     -= raty_max - state[attr_name]%divisor
+            state[attr_name]  += raty_max - state[attr_name]%divisor
           else
-            state[attr_name]  += raty_max - state[attr_name]%divisor + point[attr_name.to_sym]
             state[:point]     -= raty_max - state[attr_name]%divisor + point[attr_name.to_sym]
+            state[attr_name]  += raty_max - state[attr_name]%divisor + point[attr_name.to_sym]
           end
         end
       end
@@ -72,6 +73,7 @@ class UsersController < ApplicationController
       point.each do |key, raty_point|
         if !state.send("will_save_change_to_#{key}?")
           if state[key]%divisor != raty_point
+            puts("普通のポイントアップ")
             state[:point] -= (raty_point - state[key]%divisor)
             state[key] += (raty_point - state[key]%divisor)
           end
