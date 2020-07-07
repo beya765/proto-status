@@ -60,7 +60,7 @@ end
 
 group :production do
   gem 'pg', '1.1.0'
-  gem 'fog' # 画像アップローダーの本番環境動作用
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
