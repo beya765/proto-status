@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # if Rails.env.production?
   #   storage :fog
   # else
-    storage :file
+    storage :file # fogだと逆にheroku上でアプロダが上手く働かないためコメントアウト
   # end
 
   # Override the directory where uploaded files will be stored.
