@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "status_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  host = 'https://sampapp-0324.herokuapp.com'
+  host = 'https://avartus0703.herokuapp.com'
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
