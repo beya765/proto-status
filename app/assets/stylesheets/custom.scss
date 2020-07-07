@@ -85,12 +85,14 @@ footer {
       background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, transparent), color-stop(.5, #ffffff), to(#ffffff)),
       -webkit-gradient(linear, 0 0, 100% 0, color-stop(.5, transparent), color-stop(.5, #ffffff), to(#ffffff));
       -webkit-background-size: 5px 5px;
+      background-size:         5px 5px;
     }
     &:nth-child(even) {
       background-color: rgba(217, 255, 0, 0.116);
       background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, transparent), color-stop(.5, #ffffff), to(#ffffff)),
       -webkit-gradient(linear, 0 0, 100% 0, color-stop(.5, transparent), color-stop(.5, #ffffff), to(#ffffff));
       -webkit-background-size: 5px 5px;
+      background-size:         5px 5px;
     }
   }
 }

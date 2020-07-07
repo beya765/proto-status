@@ -12,7 +12,7 @@
           <li class="nav-item dropdown dropright">
             <a href="#" class="nav-item dropdown-toggle nav-link" data-toggle="dropdown">ドロップダウン</a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'マイページ', "#", class: "dropdown-item" %></li>
+              <li><%= link_to '設定変更', edit_user_path(current_user), class: "dropdown-item" %></li>
             </ul>
           </li>
         <% else %>

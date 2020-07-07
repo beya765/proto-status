@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200629071457) do
+ActiveRecord::Schema.define(version: 20200707051621) do
 
   create_table "records", force: :cascade do |t|
     t.string "act_content"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20200629071457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

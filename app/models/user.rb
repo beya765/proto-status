@@ -11,6 +11,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_secure_password
+  # CarrierWaveに画像と関連付けたUserモデルを伝える
+  mount_uploader :image, ImageUploader
 
   # 渡された文字列のハッシュ値を返す
   # https://github.com/rails/rails/blob/master/activemodel/lib/active_model/secure_password.rb

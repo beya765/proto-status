@@ -1,7 +1,7 @@
 <script>
   (function () {
-    let nowPoint = Number($('#point').text()); <%# 表示用 %>
-    let usablePoint = <%= @state.point %>; <%# ポイント増減を取り扱う %>
+    let nowPoint     = Number($('#point').text()); <%# 表示用 %>
+    let usablePoint  = <%= @state.point %>; <%# ポイント増減を取り扱う %>
 
     document.body.addEventListener('ajax:success', function(event) {
       nowPoint = Number($('#point').text());
@@ -14,9 +14,9 @@
 
     $('.plus').on('click', function() {
       let ratyScore = $(this).prev().children('.star').raty('score');
-      if(!ratyScore) ratyScore = 0;
+      if (!ratyScore) ratyScore = 0;
 
-      if(usablePoint > 0) {
+      if (usablePoint > 0) {
         ratyScore++;
 
         <%# 各ステータスのRatyスコアがMAXになったときの処理 %>
@@ -37,6 +37,7 @@
                             .raty('readOnly', false)
                             .raty('score', ratyScore)
                             .raty('readOnly', true)
+
         usablePoint--;
         $('#point').text(usablePoint);
       } else {
@@ -44,10 +45,9 @@
       }
     });
 
-    <%# ポップアップ表示(or画面クリック)の際、他にポップアップがあればそれを削除 %>
+    <%# ポップオーバー表示(or画面クリック)の際、他にポップアップがあればそれを削除 %>
     $('body').on('click', function (e) {
       $('[data-toggle="popover"]').each(function () {
-        console.log($(this).has(e.target).length)
         if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
           $(this).popover('hide');
         }

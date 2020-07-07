@@ -17,6 +17,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'rails-i18n' # エラーメッセージ日本語化
 gem 'kaminari' # ページネーション
+gem 'carrierwave' # 画像アップローダー
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

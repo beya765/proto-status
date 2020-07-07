@@ -13,8 +13,16 @@
   </li>
 </ul>
 
-<div class="text-center my-3">
-  <%= image_tag "yaruo.png", alt: "yaruo logo", size: "200x150" %>
+
+<div class="my-3 text-center">
+  <% if @user.image? %>
+    <%= link_to image_tag(@user.image, alt: "@user.image.name", size: "300x250", class: "img-thumbnail"),
+            edit_user_path(@user) %>
+  <% else %>
+    <%= link_to image_tag("yaruo.png", alt: "yaruo logo", size: "300x250", class: "img-thumbnail"),
+            edit_user_path(@user) %>
+  <% end %>
+  <p class="text-muted">画像を変更する際は、上記画像をクリック</p>
 </div>
 
 <div class="row mb-3">
