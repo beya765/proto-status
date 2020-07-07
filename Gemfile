@@ -18,7 +18,6 @@ gem 'jquery-rails'
 gem 'rails-i18n' # エラーメッセージ日本語化
 gem 'kaminari' # ページネーション
 gem 'carrierwave' # 画像アップローダー
-gem 'fog' # 画像アップローダーの本番環境動作用
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -61,6 +60,7 @@ end
 
 group :production do
   gem 'pg', '1.1.0'
+  gem 'fog' # 画像アップローダーの本番環境動作用
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
