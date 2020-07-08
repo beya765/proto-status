@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @record = @user.records.build(act_content: "最初の一歩", grow_content: "成長")
     if @user.save
       log_in @user
-      flash[:success] = "あなたの『すていたす』へようこそ！"
+      flash[:success] = "『Avartus』へようこそ！"
       redirect_to @user
     else
       flash.now[:danger] = "ユーザー登録に失敗しました"
