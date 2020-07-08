@@ -1,6 +1,9 @@
 class StatesController < ApplicationController
+  before_action :logged_in_user,  only: :update
+  before_action :correct_user,    only: :update
+  
   def update
-    @state = State.find(params[:user_id])
+    @state = State.find(params[:id])
 
     if lvup(@state).nil?
       respond_to do |format|
@@ -28,7 +31,7 @@ class StatesController < ApplicationController
       jap_attr = {lv: "レベル", str: "ちから", vit: "たいりょく", dex: "きよう", int: "かしこさ", spe: "とくしゅ"}
       grow_str = ""
 
-      if !full_attr.blank?
+      unless full_attr.blank?
         full_attr.each do |attr_name|
           if point[attr_name.to_sym] == raty_max
             state[:point]     -= raty_max - state[attr_name]%divisor

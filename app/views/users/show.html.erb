@@ -40,15 +40,13 @@
   </div>
 </div>
 
-<%if !@user.records.empty? %>
-  <% if !@user.records.last.act_content.nil? %>
+<%if @user.records.exists? %>
     <label class="ml-2">
       前回の行動（クリックで自動入力）: 　
       <button type="button" class="btn btn-outline-info preAction">
-        <%= @user.records.last.act_content %>
+        <%= @user.records.first.act_content %>
       </button>
     </label>
-  <% end %>
 <% end %>
 
 <%= render 'raty' %>

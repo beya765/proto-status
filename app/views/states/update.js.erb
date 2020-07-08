@@ -20,7 +20,7 @@ document.body.addEventListener('ajax:success', function(event) {
   $('#intVal').text('<%= @state.int %>');
   $('#speVal').text('<%= @state.spe %>');
   $('.action').val("");
-  $('.preAction').text('<%= @state.user.records.last.act_content %>')
+  $('.preAction').text('<%= @state.user.records.first.act_content %>')
   $(".status-bar").html("<%= escape_javascript(render 'shared/progress_bar', state: @state)%>");
 
   

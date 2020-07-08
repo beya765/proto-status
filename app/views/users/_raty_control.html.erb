@@ -1,7 +1,7 @@
 <script>
   (function () {
-    let nowPoint     = Number($('#point').text()); <%# 表示用 %>
-    let usablePoint  = <%= @state.point %>; <%# ポイント増減を取り扱う %>
+    let nowPoint     = Number($('#point').text()); <%# ポイント数の表示用 %>
+    let usablePoint  = <%= @state.point %>; <%# ポイント数の増減を取り扱う %>
 
     document.body.addEventListener('ajax:success', function(event) {
       nowPoint = Number($('#point').text());

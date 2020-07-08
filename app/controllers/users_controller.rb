@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user,  only: [:edit, :update]
+  before_action :correct_user,    only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -6,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user   = User.new(user_params)
     @state  = @user.build_state
-    @record = @user.records.build(act_content: "最初の一歩", grow_content: "成長")
+    
     if @user.save
       log_in @user
       flash[:success] = "『Avartus』へようこそ！"
@@ -25,7 +28,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    puts(@user.name)
   end
 
   def update

@@ -1,5 +1,5 @@
 <%= form_with model: @state, url: state_path do |f| %>
-  <%= hidden_field_tag :user_id, @state.user_id %>
+  <%= hidden_field_tag :id, @state.user_id %>
   <%= hidden_field_tag :full_attr %>
   
   <ul class="status">

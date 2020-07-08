@@ -7,7 +7,7 @@ class CreateStates < ActiveRecord::Migration[5.1]
       t.integer :dex, default: 0
       t.integer :int, default: 0
       t.integer :spe, default: 0
-      t.integer :point, default: 50
+      t.integer :point, default: 10
       t.references :user, foreign_key: true
 
       t.timestamps

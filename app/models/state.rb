@@ -9,6 +9,7 @@ class State < ApplicationRecord
   validates :spe, numericality: { less_than: 100 }
 
   def point_recovery
+    # 最終更新時の翌日にポイント回復
     # if Date.today > updated_at.ago(1.days)
     if Date.today > updated_at
       update_attribute(:point, 30)

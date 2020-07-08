@@ -10,10 +10,10 @@
   <body>
     <%= render 'layouts/header' %>
 
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div id="abc" class="alert alert-<%= message_type %> alert-dismissible fade show">
-          <%= message %>
+    <div class="container pt-5">
+      <% flash.each do |msg_type, msg| %>
+        <div id="abc" class="alert alert-<%= msg_type %> alert-dismissible fade show">
+          <%= msg %>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

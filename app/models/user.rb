@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :state, dependent: :destroy, class_name: :State
+  has_one  :state,   dependent: :destroy, class_name: :State
   has_many :records, dependent: :destroy
   
   before_save { self.email = email.downcase }
