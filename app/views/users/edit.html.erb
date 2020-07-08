@@ -4,7 +4,7 @@
     <% if @user.image? %>
       <%= image_tag(@user.image, alt: "@user.image.name", size: "300x250", class: "img-thumbnail", id: :img_prev) %>
     <% else %>
-      <%= image_tag("yaruo.png", alt: "yaruo logo", size: "300x250", class: "img-thumbnail") %>
+      <%= image_tag("yuuhina.png", alt: "yuuhina logo", size: "300x250", class: "img-thumbnail") %>
     <% end %>
 
     <%= form_with model: @user, url: user_path do |f| %>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user   = User.new(user_params)
     @state  = @user.build_state
     
-    if @user.save
+    if @user.save && @state.save
       log_in @user
       flash[:success] = "『Avartus』へようこそ！"
       redirect_to @user
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user  = User.find_by(id: params[:id])
+    @user  = User.find(params[:id])
     @state = @user.state
     @state.point_recovery
   end

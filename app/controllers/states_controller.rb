@@ -3,7 +3,7 @@ class StatesController < ApplicationController
   before_action :correct_user,    only: :update
   
   def update
-    @state = State.find(params[:id])
+    @state = State.find_by(user_id: params[:id])
 
     if lvup(@state).nil?
       respond_to do |format|
@@ -46,7 +46,6 @@ class StatesController < ApplicationController
       point.each do |key, raty_point|
         if !state.send("will_save_change_to_#{key}?")
           if state[key]%divisor != raty_point
-            puts("普通のポイントアップ")
             state[:point] -= (raty_point - state[key]%divisor)
             state[key]    += (raty_point - state[key]%divisor)
           end
