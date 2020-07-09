@@ -14,9 +14,9 @@ class UsersRegistTest < ActionDispatch::IntegrationTest
     end
     assert_template 'users/new'
 
-    # L7.25: エラーメッセージのテスト
-    # assert_select 'div#error_explanation'
-    # assert_select 'div.alert'
+    # エラーメッセージのテスト
+    assert_select 'div#error_explanation'
+    assert_select 'div.alert'
 
     assert_select 'form[action="/regist"]'
   end

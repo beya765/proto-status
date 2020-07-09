@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20200707051621) do
     t.integer "dex", default: 0
     t.integer "int", default: 0
     t.integer "spe", default: 0
-    t.integer "point", default: 10
+    t.integer "point", default: 30
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,5 +1,7 @@
-現在のユーザー数：<%= User.all.count %> / 
-現在のステータス数：<%= State.all.count %>
+<% if Rails.env.development? %>
+  現在のユーザー数：<%= User.all.count %> / 
+  現在のステータス数：<%= State.all.count %>
+<% end %>
 
 <div class="jumbotron">
   <p>ユーザーの新規作成はこちらから</p>

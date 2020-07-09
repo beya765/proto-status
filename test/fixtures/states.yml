@@ -1,4 +1,9 @@
-orange:
-  lv: 0,
-  str: 0,
-  int: 0,
+sample_state:
+  lv:  10,
+  str: 10,
+  vit: 10,
+  dex: 10,
+  int: 10,
+  spe: 10,
+  point: 10,
+  user: test_user

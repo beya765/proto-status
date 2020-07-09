@@ -1,5 +1,17 @@
-orange:
-  act_content: "I just ate an orange!"
-  grow_content: "1 power up!!!"
+sample01:
+  act_content: "何らかの行動"
+  grow_content: "何らかの成長"
+  created_at: <%= Time.zone.now %>
+  user: test_user
+
+sample02:
+  act_content: "何らかの行動"
+  grow_content: "何らかの成長"
+  created_at: <%= 7.hours.ago %>
+  user: test_user
+
+sample03:
+  act_content: "何らかの行動"
+  grow_content: "何らかの成長"
   created_at: <%= 10.minutes.ago %>
-  user: michael
+  user: test_user
