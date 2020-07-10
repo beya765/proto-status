@@ -23,7 +23,7 @@ gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave' # 画像アップローダー
 gem 'jquery-rails'
 gem 'kaminari' # ページネーション
