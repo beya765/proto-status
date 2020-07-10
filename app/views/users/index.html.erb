@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+  <div class="mb-3 text-center">
+    <%= image_tag(user.image, alt: "user.image.name", size: "200x150", class: "img-thumbnail") %>
+    <ul class="d-inline-block position-relative">
+      <li><%= user.state.lv %></li>
+      <li><%= user.state.str %></li>
+      <li><%= user.state.vit %></li>
+      <li><%= user.state.dex %></li>
+      <li><%= user.state.int %></li>
+      <li><%= user.state.spe %></li>
+    </ul>
+  </div>
+<% end %>

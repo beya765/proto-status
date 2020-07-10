@@ -11,6 +11,7 @@
           <%# Raty動作安定のため、turbolinksをoff %>
           <li class="nav-item"><%= link_to "マイページ", current_user, class: "nav-link", data: {"turbolinks" => false} %></li>
           <li class="nav-item"><%= link_to "成長記録", record_path, id: current_user.id, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "ユーザー一覧", users_path, class: "nav-link" %></li>
 
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle nav-link" data-toggle="dropdown">設定</a>

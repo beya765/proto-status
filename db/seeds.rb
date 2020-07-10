@@ -7,15 +7,29 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # データベース上にサンプルユーザーを生成するRailsタスク
-User.create!(name:  "beya",
-  email: "kenshinpower2000@yahoo.co.jp",
-  password:              "123456",
-  password_confirmation: "123456",
-  )
-State.create(user_id: 1, point: 30)
+suser_num = 3
 
-20.times do |n|
-  Record.create(user_id:1, act_content: "#{n+1}日目の行動", grow_content: "#{n+1}の強さを得た。")
+suser_num.times do |n|
+  name = Faker::Name.name
+  email = "example-#{n+1}@rails.org"
+  img = URI.encode Faker::Avatar.image[/^.*.png/]
+  puts img
+  password = "password"
+  User.create!({name:  name,
+      email:          email,
+      image:          open(img),
+      password:              password,
+      password_confirmation: password})
+  lv = rand(100)
+  str = rand(100)
+  vit = rand(100)
+  dex = rand(100)
+  int = rand(100)
+  spe = rand(100)
+  State.create(user_id: n+1, lv: lv, str: str, vit: vit, dex: dex, int: int, spe: spe, point: 30)
+  5.times do |m|
+    Record.create(user_id: n+1, act_content: Faker::Lorem.sentence, grow_content: Faker::Lorem.sentence)
+  end
 end
 
 User.create!(name:  "テストユーザー",
@@ -23,9 +37,9 @@ User.create!(name:  "テストユーザー",
   password:              "123456",
   password_confirmation: "123456",
   )
-State.create(user_id: 2, point: 99)
+State.create(user_id: suser_num + 1, point: 99)
 
-30.times do |n|
+5.times do |n|
   Record.create(user_id:2, act_content: "#{n+1}日目の行動", grow_content: "#{n+1}の強さを得た。")
 end
 

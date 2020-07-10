@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap', '~> 4.1.1'
 gem 'carrierwave' # 画像アップローダー
+gem 'faker'
 gem 'jquery-rails'
 gem 'kaminari' # ページネーション
 gem 'rails-i18n' # エラーメッセージ日本語化
