@@ -32,6 +32,10 @@
       
       <%= f.submit "変更する", class: "btn btn-primary btn-block mt-2" %>
     <% end %>
+
+    <div class="mt-5 text-center">
+      <%= link_to "#{@user.name}のデータを削除する", user_path(@user), method: :delete, class: "btn btn-outline-danger bg-warning", data: { confirm: "本当に削除しても宜しいでしょうか？" } %>
+    </div>    
   </div>
 </div>
 

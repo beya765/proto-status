@@ -1,7 +1,7 @@
 <header class="navbar navbar-dark bg-dark fixed-top">
   <div class="container">
-    <%= link_to 'Avartus', root_path, id: 'logo' %>
-    <%= favicon_link_tag '/favicon.ico' %>
+    <%= link_to "Avartus", root_path, id: "logo" %>
+    <%= favicon_link_tag "/favicon.ico" %>
     <nav class="navbar-expand-md">
       <button type="button" class="navbar-toggler border-0" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
         <span class="navbar-toggler-icon"></span>
@@ -9,22 +9,22 @@
       <ul class="navbar-nav collapse navbar-collapse" id="Navbar">
         <% if logged_in? %>
           <%# Raty動作安定のため、turbolinksをoff %>
-          <li class="nav-item"><%= link_to 'マイページ', current_user, class: "nav-link", data: {"turbolinks" => false} %></li>
-          <li class="nav-item"><%= link_to '成長記録', record_path, id: current_user.id, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "マイページ", current_user, class: "nav-link", data: {"turbolinks" => false} %></li>
+          <li class="nav-item"><%= link_to "成長記録", record_path, id: current_user.id, class: "nav-link" %></li>
 
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle nav-link" data-toggle="dropdown">設定</a>
             <ul class="dropdown-menu bg-light">
-              <li><%= link_to '登録情報の変更', edit_user_path(current_user), class: "dropdown-item" %></li>
-              <li><%= link_to 'ログアウト', logout_path, method: :delete, class: "dropdown-item" %></li>
+              <li><%= link_to "登録情報の変更", edit_user_path(current_user), class: "dropdown-item" %></li>
+              <li><%= link_to "ログアウト", logout_path, method: :delete, class: "dropdown-item" %></li>
             </ul>
           </li>
         <% else %>
-          <li class="nav-item"><%= link_to 'ログイン', login_path, class: "nav-link"  %></li>
+          <li class="nav-item"><%= link_to "ログイン", login_path, class: "nav-link"  %></li>
           <li class="nav-item">
             <%= form_with url: login_path do |f| %>
-              <%= f.hidden_field :email, {value: 'test@user.jp'} %>
-              <%= f.hidden_field :password, {value: '123456'} %>
+              <%= f.hidden_field :email, {value: "test@user.jp"} %>
+              <%= f.hidden_field :password, {value: "123456"} %>
               <%= f.submit "かんたんログイン", class: "btn btn-info" %>
             <% end %>
           </li>
