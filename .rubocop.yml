@@ -9,15 +9,22 @@ AllCops:
   TargetRubyVersion: 2.4.0
   # 除外するファイル
   Exclude:
-    - vendor/**/*
     - bin/*
     - db/**/*
     - config/**/*
-    - Gemfile
 
 # 日本語でのコメントを許可
 AsciiComments:
   Enabled: false
+
+Metrics:
+  Exclude:
+    - app/controllers/states_controller.rb
+
+Style/GuardClause:
+  Exclude:
+    - app/controllers/application_controller.rb
+    - app/controllers/states_controller.rb
 
 Style/Documentation:
   Enabled: false
@@ -43,7 +50,7 @@ Style/Next:
 Naming/PredicateName:
   Enabled: false
 
-# after delete
+# TODO: current_userのインスタンス化を取りやめても影響ないか確認
 Rails/HelperInstanceVariable:
   Enabled: false
 
