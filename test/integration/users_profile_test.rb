@@ -12,5 +12,4 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     # assert_select 'ul>li>h1',  text: @user.name
     # assert_select 'ul>li>span',  text: @user.state.point
   end
-
 end

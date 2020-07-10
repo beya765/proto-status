@@ -22,7 +22,6 @@ class ActionDispatch::IntegrationTest
   # L9.24: テストユーザーとしてログインする(統合テスト用)
   # sessionを直接取り扱うことができないので、Sessionsリソースに対してpostを送信することで代用
   def log_in_as(user, password: 'password')
-    post login_path, params: { email: user.email, password: password } 
+    post login_path, params: { email: user.email, password: password }
   end
 end
-

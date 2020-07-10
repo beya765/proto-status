@@ -11,9 +11,6 @@ class State < ApplicationRecord
 
   def point_recovery
     # 最終更新時の翌日にポイント回復
-    # if Date.today > updated_at.ago(1.days)
-    if Date.today > updated_at
-      update_attribute(:point, 30)
-    end
+    update(point: 30) if Time.zone.today > updated_at
   end
 end

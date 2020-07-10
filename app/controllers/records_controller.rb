@@ -1,5 +1,5 @@
 class RecordsController < ApplicationController
-  before_action :logged_in_user,  only: :show
+  before_action :logged_in_user, only: :show
 
   def show
     @user    = User.find(current_user.id)

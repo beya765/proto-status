@@ -1,16 +1,15 @@
 require 'test_helper'
 
 class UsersRegistTest < ActionDispatch::IntegrationTest
-
   test "無効なユーザー登録に対するテスト" do
     get regist_path
 
     # User.countでDBの登録件数が変わってないことを確認
     assert_no_difference 'User.count' do
       post regist_path, params: { user: { name: "",
-                                        email: "user@invalid",
-                                        password: "not",
-                                        password_confirmation: "val" } }
+                                          email: "user@invalid",
+                                          password: "not",
+                                          password_confirmation: "val" } }
     end
     assert_template 'users/new'
 

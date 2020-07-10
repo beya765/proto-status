@@ -25,7 +25,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "他ユーザーで編集画面へアクセス" do
-    log_in_as(@other) 
+    log_in_as(@other)
     get edit_user_path(@user)
     assert flash.empty?
     assert_redirected_to root_url

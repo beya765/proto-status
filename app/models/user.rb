@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_one  :state,   dependent: :destroy, class_name: :State
   has_many :records, dependent: :destroy
-  
+
   before_save :downcase_email
   validates :name, presence: true, length: { maximum: 30 }
   # email正規化
@@ -16,15 +16,15 @@ class User < ApplicationRecord
 
   # 渡された文字列のハッシュ値を返す
   # https://github.com/rails/rails/blob/master/activemodel/lib/active_model/secure_password.rb
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
   private
-    # メールアドレスをすべて小文字にする
-    def downcase_email
-      email.downcase!
-    end
+
+  # メールアドレスをすべて小文字にする
+  def downcase_email
+    email.downcase!
+  end
 end

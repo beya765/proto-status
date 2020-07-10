@@ -10,5 +10,4 @@ class MenusControllerTest < ActionDispatch::IntegrationTest
     get about_path
     assert_response :success
   end
-
 end

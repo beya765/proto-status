@@ -1,5 +1,4 @@
 module SessionsHelper
-
   # 渡されたユーザーのIDを取得
   def log_in(user)
     session[:user_id] = user.id # sessionメソッドで暗号化
@@ -7,9 +6,7 @@ module SessionsHelper
 
   # 現在ログイン中のユーザーを返す (いる場合)
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find_by(id: session[:user_id])
-    end
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   # 渡されたユーザーがログイン済みユーザーと一緒ならtrueを返す

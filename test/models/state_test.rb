@@ -1,13 +1,13 @@
 require 'test_helper'
 
 class StateTest < ActiveSupport::TestCase
-  max_over  = 999 
+  max_over = 999
 
   def setup
     @user   = users(:test_user)
     @state  = states(:sample_state)
   end
-  
+
   test "Stateモデルの有効性テスト" do
     assert @state.valid?
     @state.user_id = nil

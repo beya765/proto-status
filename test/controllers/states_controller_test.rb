@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StatesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @state = states(:sample_state) 
+    @state = states(:sample_state)
   end
 
   test "未ログインでStateデータを送信" do

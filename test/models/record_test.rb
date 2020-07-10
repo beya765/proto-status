@@ -13,13 +13,13 @@ class RecordTest < ActiveSupport::TestCase
   end
 
   test "Recordモデルのバリデーション(act_content)" do
-      @record.act_content = "   "
-      assert_not @record.valid?
+    @record.act_content = "   "
+    assert_not @record.valid?
   end
 
   test "Recordモデルのバリデーション(grow_content)" do
-      @record.grow_content = "   "
-      assert_not @record.valid?
+    @record.grow_content = "   "
+    assert_not @record.valid?
   end
 
   test "Recordモデルの順序付け" do

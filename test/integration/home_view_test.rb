@@ -18,7 +18,7 @@ class HomeViewTest < ActionDispatch::IntegrationTest
     get root_path
     assert_select "a[href=?]", user_path(@user)
     assert_select "a[href=?]", record_path
-    assert_select "a[href=?]", edit_user_path(@user)    
+    assert_select "a[href=?]", edit_user_path(@user)
     assert_select "a[href=?]", logout_path
   end
 end
