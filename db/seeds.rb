@@ -7,13 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # データベース上にサンプルユーザーを生成するRailsタスク
-suser_num = 3
+suser_num = 15
 
 suser_num.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@rails.org"
   img = URI.encode Faker::Avatar.image[/^.*.png/]
-  puts img
   password = "password"
   User.create!({name:  name,
       email:          email,

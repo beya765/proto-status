@@ -1,13 +1,20 @@
 <% @users.each do |user| %>
   <div class="mb-3 text-center">
-    <%= image_tag(user.image, alt: "user.image.name", size: "200x150", class: "img-thumbnail") %>
+    <%= user.name %>
+    <% if user.image.present? %>
+      <%= image_tag(user.image, alt: "user.image.name", size: "200x150", class: "img-thumbnail") %>
+    <% else %>
+      <%= image_tag("yuuhina.png", alt: "yuuhina logo", size: "200x150", class: "img-thumbnail") %>
+    <% end %>
     <ul class="d-inline-block position-relative">
-      <li><%= user.state.lv %></li>
-      <li><%= user.state.str %></li>
-      <li><%= user.state.vit %></li>
-      <li><%= user.state.dex %></li>
-      <li><%= user.state.int %></li>
-      <li><%= user.state.spe %></li>
+      <li>レベル：<%= user.state.lv %></li>
+      <li>ちから：<%= user.state.str %></li>
+      <li>たいりょく：<%= user.state.vit %></li>
+      <li>きよう：<%= user.state.dex %></li>
+      <li>かしこさ：<%= user.state.int %></li>
+      <li>とくしゅ：<%= user.state.spe %></li>
     </ul>
   </div>
 <% end %>
+
+<%= paginate @users %>
