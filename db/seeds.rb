@@ -12,7 +12,7 @@ suser_num = 15
 suser_num.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@rails.org"
-  img = URI.encode Faker::Avatar.image[/^.*.png/]
+  img = URI.encode Faker::Avatar.image[/^.*.png/] # ImageUploaderの拡張子バリデーションをコメントアウトする必要あり
   password = "password"
   User.create!({name:  name,
       email:          email,
