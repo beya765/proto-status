@@ -17,6 +17,9 @@ AllCops:
 AsciiComments:
   Enabled: false
 
+Metrics/AbcSize:
+  Max: 25
+
 Metrics:
   Exclude:
     - app/controllers/states_controller.rb

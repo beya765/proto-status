@@ -17,6 +17,9 @@ class ApplicationController < ActionController::Base
   def correct_user
     @user = User.find(params[:id])
     # ユーザーが異なる場合、ホーム画面へ(current_user?はセッションヘルパーメソッド)
-    redirect_to(root_url) unless current_user?(@user)
+    unless current_user?(@user)
+      redirect_to(root_url)
+      flash[:warning] = "異なるユーザーです"
+    end
   end
 end

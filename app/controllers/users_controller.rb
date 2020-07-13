@@ -21,7 +21,18 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page]).per(10)
+    if params[:state_id]
+      logger.debug(params[:state_id])
+      state         = State.all.order("#{params[:state_id]} DESC").pluck(:user_id)
+      users_search  = User.find(state)
+      @users        = Kaminari.paginate_array(users_search).page(params[:page]).per(10)
+      respond_to do |format|
+        format.html
+      end
+      # render 'index'
+    else
+      @users = User.all.page(params[:page]).per(10)
+    end
   end
 
   def show

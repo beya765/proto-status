@@ -23,6 +23,11 @@
       <%= yield %>
     </div>
 
+    <script>
+      $(function () {
+        $(".alert").fadeOut(5000);
+      });
+    </script>
     <%= render 'layouts/footer' %>
   </body>
 </html>
