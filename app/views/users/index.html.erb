@@ -1,18 +1,20 @@
 <% @users.each do |user| %>
-  <div class="mb-3 text-center">
-    <%= user.name %>
-    <% if user.image.present? %>
-      <%= link_to image_tag(user.image, alt: "user.image.name", size: "200x150", class: "img-thumbnail"), user_path(user) %>
-    <% else %>
-      <%= link_to image_tag("yuuhina.png", alt: "yuuhina logo", size: "200x150", class: "img-thumbnail"), user_path(user) %>
-    <% end %>
-    <ul class="d-inline-block position-relative">
-      <li>レベル：<%= user.state.lv %></li>
-      <li>ちから：<%= user.state.str %></li>
-      <li>たいりょく：<%= user.state.vit %></li>
-      <li>きよう：<%= user.state.dex %></li>
-      <li>かしこさ：<%= user.state.int %></li>
-      <li>とくしゅ：<%= user.state.spe %></li>
+  <div class="text-center mb-5">
+    <figure class="figure">
+      <% if user.image.present? %>
+        <%= link_to image_tag(user.image, alt: "user.image.name", size: "200x150", class: "img-thumbnail"), user_path(user) %>
+      <% else %>
+        <%= link_to image_tag("yuuhina.png", alt: "yuuhina logo", size: "200x150", class: "img-thumbnail"), user_path(user) %>
+      <% end %>
+      <figcaption class="figure-caption text-center"><h4 class="mt-1"><%= user.name %></h4></figcaption>
+    </figure>
+    <ul class="list-group d-inline-block ml-2 shadow-sm" >
+      <li class="list-group-item list-group-item-action  active">レベル：<%= user.state.lv %></li>
+      <li class="list-group-item list-group-item-action ">ちから：<%= user.state.str %></li>
+      <li class="list-group-item list-group-item-action ">たいりょく：<%= user.state.vit %></li>
+      <li class="list-group-item list-group-item-action ">きよう：<%= user.state.dex %></li>
+      <li class="list-group-item list-group-item-action ">かしこさ：<%= user.state.int %></li>
+      <li class="list-group-item list-group-item-action ">とくしゅ：<%= user.state.spe %></li>
     </ul>
   </div>
 <% end %>
