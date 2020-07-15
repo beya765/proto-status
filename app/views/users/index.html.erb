@@ -1,5 +1,5 @@
 <%= form_with url: users_path, method: :get, class: "form-inline justify-content-center mb-3" do |f| %>
-  <p class="badge badge-dark mr-2">項目順に並べ替える</p>
+  <p class="badge badge-dark mr-2 text-monospace">項目順に並べ替える</p>
   <%= f.select :state_id, [ ["レベル", 'lv'], ["ちから", 'str'], ["たいりょく", 'vit'], 
                             ["きよう", 'dex'], ["かしこさ", 'int'], ["とくしゅ", 'spe'] ], {prompt: ""}, {class: "form-control", onchange: 'this.form.submit()'}  %>
 <% end %>
@@ -14,7 +14,7 @@
       <% end %>
       <figcaption class="figure-caption text-center"><h4 class="mt-1"><%= user.name %></h4></figcaption>
     </figure>
-    <ul class="list-group d-inline-block ml-2 shadow-sm" >
+    <ul class="list-group d-inline-block ml-2 shadow-sm text-right" >
       <li class="list-group-item list-group-item-action active">レベル：<%= user.state.lv %></li>
       <li class="list-group-item list-group-item-action ">ちから：<%= user.state.str %></li>
       <li class="list-group-item list-group-item-action ">たいりょく：<%= user.state.vit %></li>
