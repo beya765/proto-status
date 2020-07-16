@@ -1,24 +1,52 @@
-# README
+# Avartus
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ゲーム感覚で今日やったことの記録をつけることで、日々の成長に
+喜びを感じられることを意識して作ったアプリです。   
 
-Things you may want to cover:
+## サイトURL
+https://avartus0703.herokuapp.com/
 
-* Ruby version
+## 主な機能
 
-* System dependencies
+- ユーザーのCRUD機能
+- ログイン機能
+- パラメータ管理機能(jQery Raty)
+- ユーザー一覧の並べ替え機能
+- 画像アップロード機能(carrierwave, mini_magick, fog)
 
-* Configuration
+## 環境
 
-* Database creation
+- 言語(Ruby 2.4.0)
+- フレームワーク(Rails 5.1.7) 
 
-* Database initialization
+## 使用技術
+- 言語/フレームワーク
+    - Ruby2.4.0 / Ruby on Rails 5.1.7
+- 開発環境
+    - Vagrant(CentOS7)
+    - Visual Studio Code
+- 本番環境
+    - heroku
+- 使用技術
+    - CircleCI
+    - GitHub
+    - AWS
+        - S3
+    - GCP
+        - Geocoding API
+        - Maps JavaScript API
+- DB
+    - PostgreSQL
+- デザイン
+    - Bootstrap
+- ページネーション
+    - kaminari
+- コード整形
+    - Rubocop
+- テスト
+    - Minitest
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 今後の課題
+・herokuからAWSを使ったデプロイに切り替える。
+・チーム開発を意識(ブランチ、issue)。
+・awsやdockerの導入
