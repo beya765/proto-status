@@ -28,13 +28,9 @@ https://avartus0703.herokuapp.com/
 - 本番環境
     - heroku
 - 使用技術
-    - CircleCI
     - GitHub
     - AWS
-        - S3
-    - GCP
-        - Geocoding API
-        - Maps JavaScript API
+        - EC2
 - DB
     - PostgreSQL
 - デザイン
